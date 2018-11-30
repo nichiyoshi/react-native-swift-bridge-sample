@@ -24,7 +24,7 @@ class Counter: NSObject {
   func decrement(_ origin: Int, withResolve resolve: RCTPromiseResolveBlock, withReject reject: RCTPromiseRejectBlock) -> Void{
     
     if(origin <= 0){
-      reject("E_COUNT", "0未満にはできません", nil)
+      reject("E_COUNT", "You can't decrement any more!!", nil)
       return
     }
     
