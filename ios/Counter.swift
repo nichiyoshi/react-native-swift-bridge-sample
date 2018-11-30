@@ -1,0 +1,35 @@
+//
+//  Counter.swift
+//  SwiftSample
+//
+//  Created by nichika_yoshida on 2018/11/30.
+//  Copyright © 2018 Facebook. All rights reserved.
+//
+
+import Foundation
+
+@objc(Counter)
+class Counter: NSObject {
+  
+  static func requiresMainQueueSetup() -> Bool {
+    return false
+  }
+  
+  @objc
+  func increment(_ origin: Int, withCallback callback: RCTResponseSenderBlock) -> Void {
+    callback([origin + 1])
+  }
+  
+  @objc
+  func decrement(_ origin: Int, withResolve resolve: RCTPromiseResolveBlock, withReject reject: RCTPromiseRejectBlock) -> Void{
+    
+    if(origin <= 0){
+      reject("E_COUNT", "0未満にはできません", nil)
+      return
+    }
+    
+    resolve(origin - 1)
+    
+  }
+  
+}
